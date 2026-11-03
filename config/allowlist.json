@@ -1,0 +1,5 @@
+{
+  "_comment": "Known-good senders/partners. Reduces score, never forces benign on its own.",
+  "sender_domains": ["workday.com", "myworkday.com", "docusign.net"],
+  "sender_addresses": []
+}

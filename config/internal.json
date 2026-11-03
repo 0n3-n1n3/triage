@@ -1,0 +1,11 @@
+{
+  "_comment": "Example organization policy for this Target-inspired demo. Verify domain and tenant ownership before real use. Executive matching is empty until you configure it.",
+  "corporate_domains": [
+    "target.com"
+  ],
+  "sharepoint_prefixes": [
+    "https://targetonline.sharepoint.com/",
+    "https://targetonline-my.sharepoint.com/"
+  ],
+  "executives": []
+}

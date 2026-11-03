@@ -1,0 +1,10 @@
+{
+  "_comment": "Fail closed. Enable trusted_input only for a controlled ingestion path that strips forged authentication headers. Never trust arbitrary uploaded EML files.",
+  "trusted_input": false,
+  "trusted_authserv_ids": [],
+  "trusted_reporter_domains": [],
+  "max_email_bytes": 10485760,
+  "max_mime_parts": 500,
+  "max_mime_depth": 20,
+  "max_report_depth": 5
+}

@@ -1,0 +1,57 @@
+{
+  "_comment": "Example brand/domain rules, not an authoritative sender directory. Customize for your organization.",
+  "microsoft": [
+    "microsoft.com",
+    "office.com",
+    "office365.com",
+    "microsoftonline.com",
+    "sharepoint.com",
+    "outlook.com",
+    "live.com",
+    "microsoftsupport.com"
+  ],
+  "sharepoint": [
+    "sharepoint.com",
+    "microsoft.com"
+  ],
+  "onedrive": [
+    "microsoft.com",
+    "live.com",
+    "sharepoint.com"
+  ],
+  "docusign": [
+    "docusign.com",
+    "docusign.net"
+  ],
+  "paypal": [
+    "paypal.com"
+  ],
+  "amazon": [
+    "amazon.com",
+    "amazon.in",
+    "amazonses.com"
+  ],
+  "workday": [
+    "workday.com",
+    "myworkday.com"
+  ],
+  "target": [
+    "target.com"
+  ],
+  "fedex": [
+    "fedex.com"
+  ],
+  "ups": [
+    "ups.com"
+  ],
+  "dhl": [
+    "dhl.com"
+  ],
+  "adobe": [
+    "adobe.com"
+  ],
+  "google": [
+    "google.com",
+    "gmail.com"
+  ]
+}

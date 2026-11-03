@@ -1,0 +1,15 @@
+{
+  "_comment": "Disabled by default. A trusted DMARC pass, an approved sender AND a marker are all required; URL/IP/header alone never closes a report.",
+  "header_markers": {
+    "X-Phish-Sim": "*",
+    "X-PhishTest": "*"
+  },
+  "sender_domains": [
+    "phish-sim.example"
+  ],
+  "sender_ips": [],
+  "url_domains": [
+    "training-portal.example"
+  ],
+  "enabled": false
+}
