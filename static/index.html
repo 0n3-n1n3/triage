@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="A private, local workspace for reviewing suspicious emails.">
+  <title>Phish Triage | Target-inspired workspace</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1.5"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1.5"/><rect x="14" y="14" width="6.5" height="6.5" rx="1.5"/></symbol>
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 4.5h16l2 11v4H2v-4l2-11Z"/><path d="M2 15.5h6l2 3h4l2-3h6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5Zm-10 9 10 5 10-5M2 16l10 5 10-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5l8-3Z"/><path d="m8 11 3 3 5-6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 17H2L12 3Zm0 6v5"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H5v20h14V7l-5-5Zm0 0v6h5M8 13h8m-8 4h6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8.5 8.5 0 1 0 .5 7M20 3v6h-6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 14 4-4m-6 6-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m0 12a4 4 0 0 0 6 0l5-5a4 4 0 0 0-6-6l-1 1" transform="translate(1 -1) scale(.9)"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h5m5 0h6M4 17h10m5 0h1"/><circle cx="11.5" cy="7" r="2.5"/><circle cx="16.5" cy="17" r="2.5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="#overview" aria-label="Phish Triage overview">
+        <span class="bullseye" aria-hidden="true"></span><span>target<span class="brand-subtitle">PHISH TRIAGE</span></span>
+      </a>
+      <div class="nav-caption">WORKSPACE</div>
+      <nav class="main-nav">
+        <button class="nav-item active" data-nav="overview" aria-current="page"><svg class="icon"><use href="#i-grid"/></svg><span>Overview</span></button>
+        <button class="nav-item" data-nav="inbox"><svg class="icon"><use href="#i-inbox"/></svg><span>Email inbox</span><span class="nav-count" id="inbox-count">0</span></button>
+        <button class="nav-item" data-nav="campaigns"><svg class="icon"><use href="#i-layers"/></svg><span>Campaigns</span><span class="nav-count" id="campaign-count">0</span></button>
+      </nav>
+      <div class="sidebar-note"><div class="small-target" aria-hidden="true"></div><strong>Less noise.<br>More clarity.</strong><p>A focused space for<br>your next investigation.</p></div>
+      <div class="sidebar-bottom">
+        <button class="quiet-button" id="load-demo"><svg class="icon"><use href="#i-refresh"/></svg>Load sample emails</button>
+        <button class="quiet-button" id="clear-workspace"><svg class="icon"><use href="#i-trash"/></svg>Clear workspace</button>
+        <div class="sidebar-divider"></div>
+        <button class="workspace-button" data-settings><span class="workspace-avatar"><svg class="icon"><use href="#i-shield"/></svg></span><span><strong>Local workspace</strong><small><span class="status-dot"></span>Private by default</small></span><svg class="icon trailing"><use href="#i-sliders"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+        <div class="breadcrumb"><span>Security operations</span><svg class="icon"><use href="#i-chevron"/></svg><strong id="breadcrumb-view">Overview</strong></div>
+        <div class="topbar-right"><label class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="search" type="search" placeholder="Search emails..." aria-label="Search emails"><kbd>/</kbd></label><span class="topbar-divider"></span><button class="icon-button mobile-export" id="export-mobile" aria-label="Export results" disabled><svg class="icon"><use href="#i-download"/></svg></button><span class="analyst-avatar" title="Local analyst workspace">A</span></div>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <div class="page-heading"><div><div class="eyebrow"><span></span>EMAIL SECURITY</div><h1 id="page-title">Stay on target.</h1><p id="page-subtitle">Your reported emails. One clear picture.</p></div><div class="heading-actions"><button class="button secondary" id="export-results" disabled><svg class="icon"><use href="#i-download"/></svg><span>Export results</span></button><button class="button primary" data-upload><svg class="icon"><use href="#i-plus"/></svg>Analyze email</button></div></div>
+
+        <div class="workspace-banner" id="workspace-banner" role="status"><span class="banner-icon"><svg class="icon"><use href="#i-info"/></svg></span><span id="banner-text">Connecting to your local workspace...</span><button class="text-button" id="banner-action" hidden>Start fresh<svg class="icon"><use href="#i-arrow"/></svg></button></div>
+        <div id="batch-errors" class="batch-errors" hidden></div>
+
+        <section class="metrics" id="metrics" aria-label="Batch summary">
+          <button class="metric-card" data-metric="all"><span class="metric-top">Emails analyzed<svg class="icon"><use href="#i-mail"/></svg></span><strong id="metric-total">0</strong><span class="metric-note">In this workspace</span></button>
+          <button class="metric-card" data-metric="malicious"><span class="metric-top">Flagged malicious<svg class="icon red"><use href="#i-alert"/></svg></span><strong id="metric-malicious" class="red">0</strong><span class="metric-note"><span class="tiny-dot red-bg"></span>Prioritize these emails</span></button>
+          <button class="metric-card" data-metric="uncertain"><span class="metric-top">Needs review<svg class="icon amber"><use href="#i-clock"/></svg></span><strong id="metric-uncertain">0</strong><span class="metric-note"><span class="tiny-dot amber-bg"></span>A closer look is needed</span></button>
+          <button class="metric-card" data-metric="low"><span class="metric-top">Benign &amp; training<svg class="icon green"><use href="#i-circle-check"/></svg></span><strong id="metric-low">0</strong><span class="metric-note" id="metric-low-note">0 benign &middot; 0 simulations</span></button>
+        </section>
+
+        <div class="content-grid" id="inbox-layout">
+          <section class="panel inbox-panel" aria-labelledby="inbox-heading">
+            <div class="panel-heading"><div><h2 id="inbox-heading">Recent emails <span class="count-label" id="table-count">0</span></h2><p id="table-subtitle">A little context for every decision.</p></div><div class="sort-control"><select id="sort" aria-label="Sort emails"><option value="recent">Newest first</option><option value="score">Highest score</option><option value="subject">Subject A-Z</option></select></div></div>
+            <div class="table-tools"><div class="filter-tabs" id="filter-tabs" role="group" aria-label="Filter by verdict"></div><label class="review-toggle"><input id="unreviewed" type="checkbox"><span>Unreviewed</span></label></div>
+            <div class="campaign-filter" id="campaign-filter" hidden><svg class="icon"><use href="#i-layers"/></svg><span>Showing one campaign</span><button class="icon-button" id="clear-campaign" aria-label="Clear campaign filter"><svg class="icon"><use href="#i-close"/></svg></button></div>
+            <div class="table-scroll"><table class="email-table"><thead><tr><th scope="col">EMAIL</th><th scope="col">VERDICT</th><th scope="col">SCORE</th><th scope="col">RECEIVED</th><th scope="col"><span class="sr-only">Open email</span></th></tr></thead><tbody id="email-rows"></tbody></table></div>
+            <div class="empty-state" id="empty-state" hidden><span class="empty-icon"><svg class="icon"><use href="#i-inbox"/></svg></span><h3 id="empty-title">A fresh start.</h3><p id="empty-description">Drop in an email. We will help you take a closer look.</p><button class="button primary" id="empty-action">Analyze an email<svg class="icon"><use href="#i-arrow"/></svg></button></div>
+            <div class="table-footer"><span id="table-footer-text">No emails yet</span><button class="text-button" id="view-all">View inbox<svg class="icon"><use href="#i-arrow"/></svg></button></div>
+          </section>
+
+          <aside class="right-column" id="right-column">
+            <section class="panel breakdown-panel" aria-labelledby="breakdown-title"><div class="panel-heading"><h2 id="breakdown-title">The bigger picture</h2><svg class="icon muted"><use href="#i-layers"/></svg></div><div class="donut-area"><div class="donut" id="donut" role="img" aria-label="No emails analyzed"><div class="donut-center"><strong id="donut-total">0</strong><span>total emails</span></div></div></div><div class="legend" id="legend"></div><div class="breakdown-footer"><svg class="icon"><use href="#i-info"/></svg>Verdicts, not probabilities.</div></section>
+            <section class="privacy-card"><span class="privacy-icon"><svg class="icon"><use href="#i-lock"/></svg></span><h2>Private. By default.</h2><p>Local analysis. No email leaves this app. No suspicious link gets opened.</p><button class="text-button" data-settings>How it works<svg class="icon"><use href="#i-arrow"/></svg></button><span class="privacy-decoration" aria-hidden="true"></span></section>
+          </aside>
+        </div>
+
+        <section class="campaign-section" id="campaign-section" aria-label="Campaign suggestions" hidden><div class="section-heading"><h2>Connected emails, clearer context.</h2><p>Suggested groups based on shared content and indicators. Nothing is merged automatically.</p></div><div class="campaign-cards" id="campaign-cards"></div><div class="empty-state" id="campaign-empty" hidden><span class="empty-icon"><svg class="icon"><use href="#i-layers"/></svg></span><h3>No related campaigns yet.</h3><p>Emails with matching content and indicators will appear here together.</p></div></section>
+
+        <footer class="page-footer"><span><span class="status-dot"></span>Local rules only<span class="footer-dot">&middot;</span>No live reputation checks</span><span>Target-inspired. Independently built.</span></footer>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="modal upload-modal" id="upload-dialog" aria-labelledby="upload-title"><div class="modal-heading"><span class="modal-icon"><svg class="icon"><use href="#i-mail"/></svg></span><button class="icon-button" data-close="upload-dialog" aria-label="Close upload"><svg class="icon"><use href="#i-close"/></svg></button></div><h2 id="upload-title">Let's take a closer look.</h2><p class="modal-description">Upload saved emails for a private, local analysis.</p><div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drop .eml files"><span class="upload-circle"><svg class="icon"><use href="#i-upload"/></svg></span><strong>Drop your emails here</strong><span>or <span class="red underline">browse files</span></span><small>.eml only &middot; 10 MiB per file &middot; 25 files maximum</small></div><input class="hidden-input" id="file-input" type="file" accept=".eml,message/rfc822" multiple><div class="file-list" id="file-list"></div><div class="form-error" id="upload-error" role="alert" hidden></div><div class="upload-note"><svg class="icon"><use href="#i-info"/></svg><span>This replaces the current batch. Export first to keep your results. Maximum 20 MiB combined.</span></div><div class="modal-actions"><button class="button secondary" data-close="upload-dialog">Cancel</button><button class="button primary" id="analyze-button" disabled><svg class="icon"><use href="#i-spark"/></svg><span>Analyze emails</span></button></div><p class="local-assurance"><svg class="icon"><use href="#i-lock"/></svg>Your files are not saved or sent to a third party.</p></dialog>
+
+  <dialog class="detail-panel" id="detail-dialog" aria-labelledby="detail-subject"><div class="detail-topbar"><span><svg class="icon"><use href="#i-mail"/></svg>Email details</span><button class="icon-button" data-close="detail-dialog" aria-label="Close email details"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="detail-scroll"><div class="detail-context" id="detail-context"></div><h2 id="detail-subject"></h2><div class="sender-block"><span class="sender-avatar" id="detail-avatar"></span><div><strong id="detail-sender-name"></strong><span id="detail-sender"></span></div></div><dl class="email-metadata" id="detail-metadata"></dl><div class="detail-verdict" id="detail-verdict"></div><div class="detail-tabs" role="tablist" aria-label="Email detail sections"><button role="tab" id="tab-evidence" aria-selected="true" aria-controls="detail-evidence" data-tab="evidence">Evidence</button><button role="tab" id="tab-email" aria-selected="false" aria-controls="detail-email" data-tab="email" tabindex="-1">Email preview</button><button role="tab" id="tab-indicators" aria-selected="false" aria-controls="detail-indicators" data-tab="indicators" tabindex="-1">Indicators</button></div><section id="detail-evidence" role="tabpanel" aria-labelledby="tab-evidence"></section><section id="detail-email" role="tabpanel" aria-labelledby="tab-email" hidden></section><section id="detail-indicators" role="tabpanel" aria-labelledby="tab-indicators" hidden></section></div><div class="detail-bottom"><span id="review-state">Not reviewed yet</span><button class="button primary" id="mark-reviewed"><svg class="icon"><use href="#i-check"/></svg>Mark reviewed</button></div></dialog>
+
+  <dialog class="modal settings-modal" id="settings-dialog" aria-labelledby="settings-title"><div class="modal-heading"><span class="modal-icon"><svg class="icon"><use href="#i-shield"/></svg></span><button class="icon-button" data-close="settings-dialog" aria-label="Close workspace details"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="eyebrow">YOUR WORKSPACE</div><h2 id="settings-title">Simple by design.</h2><p class="modal-description">A focused, single-user workspace. Nothing extra.</p><dl class="settings-list"><div><dt>Analysis</dt><dd>Local, explainable rules</dd></div><div><dt>External services</dt><dd>None connected</dd></div><div><dt>Email storage</dt><dd>Memory only; resets on refresh</dd></div><div><dt>Authentication</dt><dd>Uploaded headers are untrusted</dd></div><div><dt>Automatic actions</dt><dd>No deletion, closure, or blocking</dd></div><div><dt>Scoring</dt><dd>Rule points, not a probability</dd></div></dl><div class="settings-note"><svg class="icon"><use href="#i-info"/></svg><p>A low score is not proof of safety. Uploaded emails need analyst review. Demo trust applies only to built-in fictional samples.</p></div><p class="settings-footer">Customize policy in <code>config/</code> and restart the app.<br>Independent project. Not affiliated with Target Corporation.</p><button class="button primary full-width" data-close="settings-dialog">Back to the workspace<svg class="icon"><use href="#i-arrow"/></svg></button></dialog>
+
+  <dialog class="modal confirm-modal" id="confirm-dialog" aria-labelledby="confirm-title"><div class="modal-heading"><span class="modal-icon"><svg class="icon"><use href="#i-refresh"/></svg></span><button class="icon-button" data-close="confirm-dialog" aria-label="Cancel"><svg class="icon"><use href="#i-close"/></svg></button></div><h2 id="confirm-title">Clear this workspace?</h2><p class="modal-description" id="confirm-description">This removes the current batch and review status from this page. Export first to keep a copy.</p><div class="modal-actions"><button class="button secondary" data-close="confirm-dialog">Keep working</button><button class="button primary" id="confirm-action">Clear workspace</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="noscript">Enable JavaScript to use the local dashboard. No external scripts are loaded.</div></noscript>
+</body>
+</html>
